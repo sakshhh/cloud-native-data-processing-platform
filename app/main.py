@@ -2,8 +2,19 @@ from fastapi import FastAPI, UploadFile, File
 
 from app.processing import process_csv
 from app.db import save_report
+from contextlib import asynccontextmanager
 
-app = FastAPI()
+from app.init_db import create_table
+
+@asynccontextmanager
+
+async def lifespan(app):
+
+    create_table()
+
+    yield
+
+app = FastAPI(lifespan=lifespan)
 
 
 @app.post("/upload")
