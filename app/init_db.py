@@ -13,7 +13,7 @@ def create_table():
             break
 
         except Exception as e:
-            print(f"Attempt {attempt + 1}: PostgreSQL not ready")
+            print(f"Attempt {attempt + 1}: {e}")
             time.sleep(3)
 
     if conn is None:
