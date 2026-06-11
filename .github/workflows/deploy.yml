@@ -23,6 +23,11 @@ jobs:
 
           script: |
             cd ~/cloud-native-data-processing-platform
+
+            git reset --hard
             git pull
+
+            docker build -t cloud-native-data-platform .
+
             docker compose down
-            docker compose up -d --build
+            docker compose up -d

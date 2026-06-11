@@ -14,7 +14,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
   api:
-    build: .
+    image: cloud-native-data-platform
 
     container_name: fastapi-app
 
