@@ -36,10 +36,18 @@ resource "aws_security_group" "devops_sg" {
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
-
     cidr_blocks = ["0.0.0.0/0"]
   }
 
+  ingress {
+  description = "HTTP"
+  from_port   = 80
+  to_port     = 80
+  protocol    = "tcp"
+  cidr_blocks = ["0.0.0.0/0"]
+  }
+
+/*
   ingress {
   description = "FastAPI"
   from_port   = 8000
@@ -47,6 +55,7 @@ resource "aws_security_group" "devops_sg" {
   protocol    = "tcp"
   cidr_blocks = ["0.0.0.0/0"]
   }
+*/
 
   egress {
     from_port   = 0
@@ -62,7 +71,8 @@ resource "aws_security_group" "devops_sg" {
 
 resource "aws_instance" "devops_server" {
 
-  ami           = data.aws_ami.amazon_linux.id
+  #ami           = data.aws_ami.amazon_linux.id
+  ami = "ami-01e31019d5c730de7"
   instance_type = "t3.micro"
 
   key_name = aws_key_pair.devops_key.key_name
