@@ -6,6 +6,8 @@ from contextlib import asynccontextmanager
 
 from app.init_db import create_table
 
+from prometheus_fastapi_instrumentator import Instrumentator
+
 @asynccontextmanager
 
 async def lifespan(app):
@@ -16,6 +18,7 @@ async def lifespan(app):
 
 app = FastAPI(lifespan=lifespan)
 
+Instrumentator().instrument(app).expose(app)
 
 @app.post("/upload")
 async def upload_file(file: UploadFile = File(...)):
