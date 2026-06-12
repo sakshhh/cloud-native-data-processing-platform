@@ -50,6 +50,7 @@ services:
 
     volumes:
       - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - prometheus_data:/prometheus
 
     depends_on:
       - api
@@ -70,3 +71,4 @@ services:
 volumes:
   postgres_data:
   grafana_data:
+  prometheus_data:
