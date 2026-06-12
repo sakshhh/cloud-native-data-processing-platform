@@ -15,6 +15,7 @@ services:
 
   api:
     build: .
+    image: cloud-native-data-platform
 
     container_name: fastapi-app
 
