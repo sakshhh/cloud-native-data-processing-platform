@@ -30,4 +30,4 @@ jobs:
             docker build -t cloud-native-data-platform .
 
             docker compose down
-            docker compose up -d
+            docker compose up -d --no-build

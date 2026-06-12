@@ -1,0 +1,11 @@
+groups:
+  - name: fastapi-alerts
+    rules:
+      - alert: FastAPIDown
+        expr: up{job="fastapi"} == 0
+        for: 1m
+        labels:
+          severity: critical
+        annotations:
+          summary: "FastAPI is down"
+          description: "Prometheus has not been able to scrape FastAPI for more than 1 minute."
